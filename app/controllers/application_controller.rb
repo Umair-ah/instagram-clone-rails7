@@ -8,3 +8,4 @@ class ApplicationController < ActionController::Base
             devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :full_name, :phone_number])
         end
 end
+

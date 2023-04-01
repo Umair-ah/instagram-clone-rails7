@@ -17,7 +17,10 @@
         <div class="gap-4 navbar-collapse">
             <%= link_to root_path, class:"text-dark" do %><i class="fa-solid fa-house fa-xl"></i><% end %>
             <i class="fa-brands fa-facebook-messenger fa-xl"></i>
-            <%= link_to new_post_path, class:"text-dark" do %><i class="fa-regular fa-square-plus fa-xl"></i><% end %>
+            <!-- Button trigger modal -->
+            <a type="button" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              <i class=" text-dark fa-regular fa-square-plus fa-xl"></i>
+            </a>
             <i class="fa-regular fa-compass fa-xl"></i>
             <i class="fa-regular fa-heart fa-xl"></i>
 
@@ -41,3 +44,5 @@
     </div>
   </div>
 </nav>
+
+<%= render "posts/form", post: Post.new %>
