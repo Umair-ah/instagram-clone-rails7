@@ -33,6 +33,8 @@ gem "font-awesome-sass", "~> 6.4.0"
 
 
 gem 'bootstrap', '~> 5.2.2'
+
+gem 'activestorage-validator'
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
