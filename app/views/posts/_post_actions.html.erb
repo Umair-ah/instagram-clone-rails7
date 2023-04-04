@@ -4,5 +4,27 @@
             <i class="<%= post.likes.find_by(user: current_user) ? "fa-solid color-red" : "fa-regular" %> fa-heart fa-xl"></i>
         <% end %>
     </div>
-    <small class="fw-bold my-1"><%= pluralize(post.likes.count, "likes")%></small>
+    <a href="#" data-bs-toggle="modal" data-bs-target="#post<%= post.id %>_likesModal" style="color: black; text-decoration: none;">
+        <small class="fw-bold my-1"><%= pluralize(post.likes.count, "likes")%></small>
+    </a>
+    <!-- Modal -->
+    <div class="modal fade" id="post<%= post.id %>_likesModal" tabindex="-1" aria-labelledby="post<%= post.id %>_likesModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="post<%= post.id %>_likesModalLabel">Post Likes</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <% post.likers.each do |liker| %>
+                <div class="d-flex flex-column gap-3">
+                    <%= render "posts/liker", liker: liker %>
+                </div>
+            <% end %>
+        </div>
+        </div>
+    </div>
+    </div>
 <% end %>
+
+
