@@ -1,0 +1,23 @@
+<div id="post<%= comment.post_id %>ModalComment<%= comment.id %>">
+    <div class="d-flex justify-content-between">
+        <div class="d-flex">
+            <%= image_tag "profile-default", class:"img-thumbnail rounded-circle border border-2", style:"width: 2.5rem; max-height:2.5rem;"%>
+            <div class="d-flex flex-column mx-2">
+                <small class="fw-bold" style="overflow:hidden; white-space: nowrap; text-overflow:ellipsis; max-width:10rem;"><%= comment.user.username %></small>
+                <small style="overflow:hidden; white-space: nowrap; text-overflow:ellipsis; max-width:399px;"><%= comment.body %></small>
+                <small class="text-muted"><%= time_ago_in_words(comment.created_at)%></small>
+            </div>
+        </div>
+
+        <% if comment.user == current_user %>
+
+            <%= button_to comment_path(comment), method: :delete, style:"background:none; border:none;" do %>
+                <i class="fa fa-times"></i>
+            <% end %>
+        
+        <% end %>
+
+
+
+    </div>
+</div>
