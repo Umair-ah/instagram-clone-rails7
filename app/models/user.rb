@@ -19,12 +19,18 @@ class User < ApplicationRecord
   has_many :followers, through: :accepted_recieved_requests, source: :follower
   has_many :followings, through: :accepted_sent_requests, source: :followed
 
+  has_many :waiting_sent_requests, ->{where(accepted: false)}, class_name: "Follow", foreign_key: "follower_id"
+
   def follow(user)
     Follow.create(follower: self, followed: user)
   end
 
   def unfollow(user)
     self.accepted_sent_requests.find_by(followed: user)&.destroy
+  end
+
+  def cancel_request(user)
+    self.waiting_sent_requests.find_by(followed: user)&.destroy
   end
 
 end
